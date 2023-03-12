@@ -1,0 +1,351 @@
+$ python3 fsmd-sim-complete.py 100 test_2/gcd_desc.xml test_2/gcd_stim.xml 
+
+Welcome to the FSMD simulator! - Version 1.0 - Designed by Luca
+
+--FSMD description--
+States:
+  INITIALIZE
+  TEST
+  AMINB
+  BMINA
+  FINISH
+Initial state:
+  INITIALIZE
+Inputs:
+  in_A
+  in_B
+Variables:
+  var_A
+  var_B
+Operations:
+  init_B : var_B = in_B
+  B_minus_A : var_B = var_B - var_A
+  A_minus_B : var_A = var_A - var_B
+  init_A : var_A = in_A
+Conditions:
+  A_greater_B : var_A > var_B
+  A_equal_B : var_A == var_B
+  B_greater_A : var_A < var_B
+FSMD transitions table:
+  AMINB
+    nextstate: TEST, condition: True, instruction: A_minus_B
+  INITIALIZE
+    nextstate: TEST, condition: True, instruction: init_A init_B
+  TEST
+    nextstate: FINISH, condition: A_equal_B, instruction: NOP
+    nextstate: AMINB, condition: A_greater_B, instruction: NOP
+    nextstate: BMINA, condition: B_greater_A, instruction: NOP
+  FINISH
+    nextstate: FINISH, condition: True, instruction: NOP
+  BMINA
+    nextstate: TEST, condition: True, instruction: B_minus_A
+
+---Start simulation---
+At the beginning of the simulation the status is:
+Variables:
+  var_A = 0
+  var_B = 0
+Initial state: INITIALIZE
+--------------------------------------------------
+Cycle: 0 
+Current state: INITIALIZE
+Inputs:
+  in_A = 100
+  in_B = 12
+The condition (True) is true.
+Executing instruction: init_A init_B
+Next state: TEST
+At the end of cycle 0 execution, the status is:
+Variables:
+  var_A = 100
+  var_B = 12
+--------------------------------------------------
+Cycle: 1 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 1 execution, the status is:
+Variables:
+  var_A = 100
+  var_B = 12
+--------------------------------------------------
+Cycle: 2 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 2 execution, the status is:
+Variables:
+  var_A = 88
+  var_B = 12
+--------------------------------------------------
+Cycle: 3 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 3 execution, the status is:
+Variables:
+  var_A = 88
+  var_B = 12
+--------------------------------------------------
+Cycle: 4 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 4 execution, the status is:
+Variables:
+  var_A = 76
+  var_B = 12
+--------------------------------------------------
+Cycle: 5 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 5 execution, the status is:
+Variables:
+  var_A = 76
+  var_B = 12
+--------------------------------------------------
+Cycle: 6 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 6 execution, the status is:
+Variables:
+  var_A = 64
+  var_B = 12
+--------------------------------------------------
+Cycle: 7 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 7 execution, the status is:
+Variables:
+  var_A = 64
+  var_B = 12
+--------------------------------------------------
+Cycle: 8 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 8 execution, the status is:
+Variables:
+  var_A = 52
+  var_B = 12
+--------------------------------------------------
+Cycle: 9 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 9 execution, the status is:
+Variables:
+  var_A = 52
+  var_B = 12
+--------------------------------------------------
+Cycle: 10 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 10 execution, the status is:
+Variables:
+  var_A = 40
+  var_B = 12
+--------------------------------------------------
+Cycle: 11 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 11 execution, the status is:
+Variables:
+  var_A = 40
+  var_B = 12
+--------------------------------------------------
+Cycle: 12 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 12 execution, the status is:
+Variables:
+  var_A = 28
+  var_B = 12
+--------------------------------------------------
+Cycle: 13 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 13 execution, the status is:
+Variables:
+  var_A = 28
+  var_B = 12
+--------------------------------------------------
+Cycle: 14 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 14 execution, the status is:
+Variables:
+  var_A = 16
+  var_B = 12
+--------------------------------------------------
+Cycle: 15 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_greater_B) is true.
+Executing instruction: NOP
+Next state: AMINB
+At the end of cycle 15 execution, the status is:
+Variables:
+  var_A = 16
+  var_B = 12
+--------------------------------------------------
+Cycle: 16 
+Current state: AMINB
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: A_minus_B
+Next state: TEST
+At the end of cycle 16 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 12
+--------------------------------------------------
+Cycle: 17 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (B_greater_A) is true.
+Executing instruction: NOP
+Next state: BMINA
+At the end of cycle 17 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 12
+--------------------------------------------------
+Cycle: 18 
+Current state: BMINA
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: B_minus_A
+Next state: TEST
+At the end of cycle 18 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 8
+--------------------------------------------------
+Cycle: 19 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (B_greater_A) is true.
+Executing instruction: NOP
+Next state: BMINA
+At the end of cycle 19 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 8
+--------------------------------------------------
+Cycle: 20 
+Current state: BMINA
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: B_minus_A
+Next state: TEST
+At the end of cycle 20 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 4
+--------------------------------------------------
+Cycle: 21 
+Current state: TEST
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (A_equal_B) is true.
+Executing instruction: NOP
+Next state: FINISH
+At the end of cycle 21 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 4
+--------------------------------------------------
+Cycle: 22 
+Current state: FINISH
+Inputs:
+  in_A = 0
+  in_B = 0
+The condition (True) is true.
+Executing instruction: NOP
+Next state: FINISH
+At the end of cycle 22 execution, the status is:
+Variables:
+  var_A = 4
+  var_B = 4
+--------------------------------------------------
+End-state reached.
+End of simulation. Goodbye!
+

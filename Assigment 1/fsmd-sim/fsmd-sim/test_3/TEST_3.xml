@@ -1,0 +1,159 @@
+<fsmddescription>
+  
+  <statelist>
+    <state>INITIALIZE</state>
+    <state>CHECK_A</state>
+    <state>CHECK_B</state>
+    <state>ROUND_A</state>
+    <state>ROUND_B</state>
+    <state>TEST</state>
+    <state>AMINB</state>
+    <state>BMINA</state>
+    <state>FINISH</state>
+  </statelist>
+
+  <initialstate>INITIALIZE</initialstate>
+
+  <inputlist>
+    <input>in_A</input>
+    <input>in_B</input>
+  </inputlist>
+
+  <variablelist>
+    <variable>VAR_A</variable>
+    <variable>VAR_B</variable>
+  </variablelist>
+
+  <operationlist>
+    <operation>
+      <name>init_A</name>
+      <expression>VAR_A = in_A</expression>
+    </operation>    
+    <operation>
+      <name>init_B</name>
+      <expression>VAR_B = in_B</expression>
+    </operation>
+    <operation>
+      <name>ROUND_A</name>
+      <expression>VAR_A = round(VAR_A)</expression>
+    </operation>
+    <operation>
+      <name>ROUND_B</name>
+      <expression>VAR_B = round(VAR_B)</expression> 
+    </operation>
+    <operation>
+      <name>A_minus_B</name>
+      <expression>VAR_A = VAR_A - VAR_B</expression>
+    </operation>
+    <operation>
+      <name>B_minus_A</name>
+      <expression>VAR_B = VAR_B - VAR_A</expression>
+    </operation>
+    </operationlist>
+
+  <conditionlist>
+    <condition>
+      <name>A_equal_B</name>
+      <expression>VAR_A == VAR_B</expression>
+    </condition>
+    <condition>
+      <name>A_greater_B</name>
+      <expression>VAR_A &gt; VAR_B</expression>
+    </condition>
+    <condition>
+      <name>B_greater_A</name>
+      <expression>VAR_A &lt; VAR_B</expression>
+    </condition>
+  </conditionlist>
+
+  <fsmd>
+    <INITIALIZE>
+      <transition>
+        <condition>True</condition>
+        <instruction>init_A init_B</instruction>
+        <nextstate>CHECK_A</nextstate>
+      </transition>
+    </INITIALIZE>
+  
+    <CHECK_A>
+      <transition>
+        <condition>True</condition>
+        <instruction>NOP</instruction>
+        <nextstate>ROUND_A</nextstate>
+      </transition>
+    </CHECK_A>
+
+    <ROUND_A>
+      <transition>
+        <condition>True</condition>
+        <instruction>ROUND_A</instruction>
+        <nextstate>CHECK_B</nextstate>
+      </transition>
+    </ROUND_A>
+
+    <CHECK_B>
+      <transition>
+        <condition>True</condition>
+        <instruction>NOP</instruction>
+        <nextstate>ROUND_B</nextstate>
+      </transition>
+    </CHECK_B>
+
+    <ROUND_B>
+      <transition>
+        <condition>True</condition>
+        <instruction>ROUND_B</instruction>
+        <nextstate>TEST</nextstate>
+      </transition>
+    </ROUND_B>
+
+    <TEST>
+      <transition>
+        <condition>A_equal_B</condition>
+        <instruction>NOP</instruction>
+        <nextstate>FINISH</nextstate>
+      </transition>
+      <transition>
+        <condition>A_greater_B</condition>
+        <instruction>NOP</instruction>
+        <nextstate>AMINB</nextstate>
+      </transition>
+      <transition>
+        <condition>B_greater_A</condition>
+        <instruction>NOP</instruction>
+        <nextstate>BMINA</nextstate>
+      </transition>
+    </TEST>
+
+    <AMINB>
+      <transition>
+        <condition>True</condition>
+        <instruction>A_minus_B</instruction>
+        <nextstate>TEST</nextstate>
+      </transition>
+    </AMINB>
+
+    <BMINA>
+      <transition>
+        <condition>True</condition>
+        <instruction>B_minus_A</instruction>
+        <nextstate>TEST</nextstate>
+      </transition>
+    </BMINA>
+
+    <FINISH>
+      <transition>
+        <condition>True</condition>
+        <instruction>NOP</instruction>
+        <nextstate>FINISH</nextstate>
+      </transition>
+    </FINISH>
+  </fsmd>
+
+</fsmddescription>
+
+
+
+
+
+   

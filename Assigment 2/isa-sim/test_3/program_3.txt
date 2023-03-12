@@ -1,0 +1,25 @@
+# Program multiplies 3 numbers
+# Check the expected output and compare it with the one of your simulator
+# The format is: <instruction mem. address>: <OPCODE> <COMMA SEPARATED OPERANDS>;
+# All numers are decimal 
+
+0: LI R1, 1;   # Load the value 1 into R1
+1: LI R2, 2;   # Load the value 2 into R2
+2: LI R4, 1;   # Load the value 1 into R4, will be used for counter
+3: LI R6, 9;   # Load the value 8 into R6, will be used to loop addition
+4: LI R7, 16;   # Load the value 14 into R7, will be used to loop addition
+5: LI R8, 3;   # Load the value 3 into R8
+6: LD R3, R2;   # Load mem(2) into R3
+7: LD R2, R1;   # Load mem(1) into R2
+8: LD R1, R0;   # Load mem(0) into R1
+9: ADD R10, R10, R2;   # R10 = R10 + R2 (Adding R2 onto itself)
+10: ADD R5, R5, R4;   # R5 = R5 + R4 (COUNTER)
+11: JLT R6, R5, R3;   # If R5 < R3, loops back to R6
+12: SD R10, R8;   # Saves R10 onto mem(3)
+13: LD R11, R8;   # Load mem(3) into R11
+14: LI R10, 0;   # Resets R10.
+15: LI R5, 0;   # Resets R5.
+16: ADD R10, R10, R11;   # R10 = R10 + R1 (Adding R2 onto itself)
+17: ADD R5, R5, R4;   # R5 = R5 + R4 (COUNTER)
+18: JLT R7, R5, R1;   # If R5 < R3, loops back to R7
+19: END;
